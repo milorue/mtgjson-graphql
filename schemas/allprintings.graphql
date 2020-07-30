@@ -1,0 +1,357 @@
+type Query{
+    test: Tuple
+}
+
+type Tuple{
+    "Description test"
+    test: String
+    test2: String
+}
+
+type Card{
+    "Name of the artist that illustrated the card art"
+    artist: String
+    asciiName: String
+    availability: [String]
+    borderColor: String
+    colorIdentity: [String]
+    colorIndicator: [String]
+    colors: [String]
+    convertedManaCost: Float
+    count: Int
+    duelDeck: String
+    edhrecRank: Int
+    faceConvertedManaCost: Float
+    faceName: String
+    flavorName: String
+    flavorText: String
+    foreignData: [ForeignData]
+    frameEffects: [String]
+    frameVersion: String
+    hand: String
+    hasContentWarning: Boolean
+    hasFoil: Boolean
+    hasAlternativeDeckLimit: Boolean
+    hasNonFoil: Boolean
+    identifiers: Identifiers
+    isAlternative: Boolean
+    isFoil: Boolean
+    isFullArt: Boolean
+    isOnlineOnly: Boolean
+    isOversized: Boolean
+    isPromo: Boolean
+    isReprint: Boolean
+    isReserved: Boolean
+    isStarter: Boolean
+    isStorySpotlight: Boolean
+    isTextless: Boolean
+    isTimeshifted: Boolean
+    keywords: [String]
+    layout: String
+    leadershipSkills: LeadershipSkills
+    legalities: Legalities
+    life: String
+    loyalty: String
+    manaCost: String
+    name: String
+    number: String
+    originalText: String
+    originalType: String
+    otherFaceIds: [String]
+    power: String
+    printings: [String]
+    promoTypes: [String]
+    purchaseUrls: PurchaseUrls
+    rarity: String
+    rulings: [Rulings]
+    side: String
+    subtypes: [String]
+    supertypes: [String]
+    text: String
+    toughness: String
+    type: String
+    types: [String]
+    uuid: String
+    variations: [String]
+    watermark: String
+}
+
+type AtomicCard{
+    asciiName: String
+    colorIdentity: [String]
+    colorIndicator: [String]
+    colors: [String]
+    convertedManaCost: Float
+    edhrecRank: Int
+    faceConvertedManaCost: Float
+    faceName: String
+    foreignData: [ForeignData]
+    hand: String
+    hasAlternativeDeckLimit: Boolean
+    isReserved: Boolean
+    layout: String
+    leadershipSkills: LeadershipSkills
+    legalities: Legalities
+    life: String
+    loyalty: String
+    manaCost: String
+    name: String
+    power: String
+    printings: [String]
+    purchaseUrls: PurchaseUrls
+    rulings: [Rulings]
+    side: String
+    subtypes: [String]
+    supertypes: [String]
+    text: String
+    toughness: String
+    type: String
+    types: [String]
+    uuid: String
+}
+
+type CardToken{
+    artist: String
+    asciiName: String
+    availability: [String]
+    borderColor: String
+    colorIdentity: [String]
+    colorIndicator: [String]
+    colors: [String]
+    convertedManaCost: Float
+    count: Int
+    duelDeck: String
+    edhrecRank: Int
+    faceName: String
+    flavorText: String
+    frameEffects: [String]
+    frameVersion: String
+    hasFoil: Boolean
+    hasNonFoil: Boolean
+    identifiers: Identifiers
+    isFullArt: Boolean
+    isOnlineOnly: Boolean
+    isPromo: Boolean
+    isReprint: Boolean
+    keywords: [String]
+    layout: String
+    loyalty: String
+    manaCost: String
+    name: String
+    number: String
+    power: String
+    promoTypes: [String]
+    reverseRelated: [String]
+    side: String
+    subtypes: [String]
+    supertypes: [String]
+    text: String
+    toughness: String
+    type: String
+    types: [String]
+    uuid: String
+    watermark: String
+}
+
+type CardTypes{
+    artifact: Types
+    conspiracy: Types
+    creature: Types
+    enchantment: Types
+    instant: Types
+    land: Types
+    phenomenon: Types
+    plane: Types
+    planeswalker: Types
+    scheme: Types
+    sorcery: Types
+    tribal: Types
+    vanguard: Types
+}
+
+type Deck{
+    code: String
+    mainBoard: [Card]
+    name: String
+    sideBoard: [Card]
+    releaseDate: String
+    type: String
+}
+
+type DeckList{
+    code: String
+    fileName: String
+    name: String
+    releaseDate: String
+}
+
+type ForeignData{
+    "Flavor text in foreign language."
+    flavorText: String
+    language: String
+    multiverseId: Int
+    name: String
+    text: String
+    type: String
+}
+
+type Identifiers{
+    cardKingdomFoilId: ID
+    cardKingdomId: ID
+    mcmId: ID
+    mcmMetaId: ID
+    mtgArenaId: ID
+    mtgoFoilId: ID
+    mtgoId: ID
+    mtgjsonV4Id: ID
+    multiverseId: ID
+    scryfallId: ID
+    scryfallOracleId: ID
+    scryfallIllustrationId: ID
+    tcgplayerProductId: ID
+}
+
+type Keywords{
+    abilityWords: [String]
+    keywordAbilities: [String]
+    keywordActions: [String]
+}
+
+type LeadershipSkills{
+    brawl: Boolean
+    commander: Boolean
+    oathbreaker: Boolean
+}
+
+type Legalities{
+    "Sol Ring is not legal in the Brawl play format. This will be omitted as null"
+    brawl: String
+    commander: String
+    duel: String
+    "Sol Ring is not legal in the Future play format. This will be omitted as null"
+    future: String
+    "Sol Ring is not legal in the Frontier play format. This will be omitted as null"
+    frontier: String
+    legacy: String
+    modern: String
+    pauper: String
+    penny: String
+    pioneer: String
+    standard: String
+    vintage: String
+}
+
+type Meta{
+    date: String
+    version: String
+}
+
+type PurchaseUrls{
+    cardKingdom: String
+    cardKingdomFoil: String
+    cardmarket: String
+    tcgplayer: String
+}
+
+type Rulings{
+    date: String
+    text: String
+}
+
+type Set{
+    baseSetSize: Int
+    block: String
+    booster: Booster
+    cards: [Card]
+    code: String
+    codeV3: String
+    isForeignOnly: Boolean
+    isFoilOnly: Boolean
+    isNonFoilOnly: Boolean
+    isOnlineOnly: Boolean
+    isPaperOnly: Boolean
+    isPartialPreview: Boolean
+    keyruneCode: String
+    mcmName: String
+    mcmId: Int
+    mtgoCode: String
+    name: String
+    parentCode: String
+    releaseDate: String
+    tcgplayerGroupId: Int
+    tokens: [CardToken]
+    totalSetSize: Int
+    translations: Translations
+    type: String
+}
+
+type SetList{
+    baseSetSize: Int
+    code: String
+    isFoilOnly: Boolean
+    isOnlineOnly: Boolean
+    isPaperOnly: Boolean
+    name: String
+    releaseDate: String
+    totalSetSize: Int
+    type: String
+}
+
+type Translations{
+    AncientGreek: String
+    Arabic: String
+    ChineseSimplifed: String
+    ChineseTraditional: String
+    French: String
+    German: String
+    Hebrew: String
+    Italian: String
+    Japanese: String
+    Korean: String
+    Latin: String
+    Phyrexian: String
+    PortugeseBrazil: String
+    Russian: String
+    Sanskrit: String
+    Spanish: String
+}
+
+type Types{
+    subTypes: [String]
+    superTypes: [String]
+}
+
+# this booster data type is work in progress
+
+type Booster{
+    default: Boosters
+}
+
+type Boosters{
+    boosters: [BoosterContent]
+    boostersTotalWeight: Int
+    sheets: [Sheets]
+}
+
+type BoosterContent{
+    contents: BoosterSheet
+    weight: Int
+}
+
+type BoosterSheet{
+    sheetName: String
+    sheetNum: Int
+}
+
+type Sheets{
+    name: String
+    balanceColors: Boolean
+    cards: [CardUUIDWeight]
+    foil: Boolean
+    totalWeight: Int
+}
+
+type CardUUIDWeight{
+    uuid: ID
+    weight: Int
+}

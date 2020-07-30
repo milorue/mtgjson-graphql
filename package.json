@@ -1,0 +1,17 @@
+{
+  "name": "mtgjson-graphql",
+  "version": "1.0.0",
+  "description": "An Apollo GraphQL Server for mtgjson",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Milo S. Rue",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.16.0",
+    "axios": "^0.19.2",
+    "graphql": "^15.3.0",
+    "graphql-tools": "^6.0.14"
+  }
+}
