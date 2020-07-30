@@ -321,7 +321,8 @@ type Types{
     superTypes: [String]
 }
 
-# this booster data type is work in progress
+# this booster data type is work in progress and will require some JSON manipulation to get it to fit
+# mostly concerned about stringify the field for sheetnames and uuid so they can be put into their own object as a value rather than a field name
 
 type Booster{
     default: Boosters
