@@ -15,7 +15,9 @@ app.use(rateLimit({
 // GraphQL server setup
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 
-app.listen(8000, () => {
-  console.info("MTGJSON Server Started");
+const port = process.env.PORT || 8000
+
+app.listen(port, () => {
+  console.info("MTGJSON Server Started on port: " + port);
   
 });
