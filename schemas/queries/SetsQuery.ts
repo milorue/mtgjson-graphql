@@ -1,10 +1,11 @@
 import {
-    GraphQLString, GraphQLNonNull
+    GraphQLString, GraphQLNonNull, GraphQLList
 } from 'graphql'
 
-import {getCardSet} from '../operations/operators'
+import {getCardSet, getSetList} from '../operations/operators'
 
 import Set from "../types/sets/SetType"
+import SetList from '../types/sets/SetListType'
 
 const SetQueries = {
     getSet: {
@@ -16,6 +17,13 @@ const SetQueries = {
         },
         async resolve(_source, {set}){
             const result = await getCardSet(set)
+            return result.data
+        },
+    },
+    getSets: {
+        type: new GraphQLNonNull(GraphQLList(SetList)),
+        async resolve(_source){
+            const result = await getSetList()
             return result.data
         }
     }

@@ -4,10 +4,9 @@ import {
     GraphQLInt,
     GraphQLBoolean
 } from 'graphql'
-import e from 'express'
 
 const SetList = new GraphQLObjectType({
-    name: "Set List",
+    name: "SetList",
     description: "Describes a metadata-like structure that holds top-level information about a Set",
     fields: () => ({
         baseSetSize: {

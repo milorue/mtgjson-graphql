@@ -9,7 +9,6 @@ import schema from './schema';
 const queryComplexityRule = queryComplexity({
   maximumComplexity: 1000,
   variables: {},
-  // eslint-disable-next-line no-console
   createError: (max: number, actual: number) => new GraphQLError(`Query is too complex: ${actual}. Maximum allowed complexity: ${max}`),
   estimators: [
     simpleEstimator({
@@ -17,6 +16,8 @@ const queryComplexityRule = queryComplexity({
     }),
   ],
 });
+
+// initializes the Apollo server, needs to modified to fit a production environment, introspection off or some more rate limiting/API key usage
 
 const apolloServer = new ApolloServer({
   schema,
