@@ -1,6 +1,5 @@
 # MTGJSON GraphQL API
-<img align="center" src="./assets/graphql.svg" height="100px"/>
-<img align="center" src="./assets/apollo-graphql-compact.svg" height="100px"/>
+<img align="center" src="./assets/graphql.svg" height="100px"/> <img align="center" src="./assets/apollo-graphql-compact.svg" height="100px"/>
 <hr/>
 
 
