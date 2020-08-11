@@ -46,9 +46,7 @@ npm run transpile:server
 this will allow you to utilize `npm start` for whatever deployment solution you choose. The build should come with an updated `/dist` already setup
 
 ### General Usage
-For most people there will be no need to download the codebase and run and host your own GraphQL server, the plans are to host this codebase at mtgjson.com/graphql or something similar but for now it is parked [here](mtgjson-graphql.herokuapp.com)
-
-Keep in mind this API is currently hosted on a free Heroku Dyno and may take some time to spin up.
+For most people there will be no need to download the codebase and run and host your own GraphQL server, the plans are to host this codebase at mtgjson.com/graphql or something similar.
 
 ## Documentation
 The benefit of using GraphQL is that the vast majority of the user-facing product is self-documenting so within GraphiQL or whatever client you are utilizing you can view the documentation and schema for the end point.
