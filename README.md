@@ -37,6 +37,14 @@ Navigate to localhost:8000/graphql and you're set, documentation for Apollo, Gra
 * [GraphQL](https://graphql.org/learn/)
 * [Apollo](https://www.apollographql.com/docs/apollo-server/)
 
+### Advanced Usage
+If you are looking to deploy this server anywhere you will need to run
+```
+npm run transpile:server
+```
+
+this will allow you to utilize `npm start` for whatever deployment solution you choose. The build should come with an updated `/dist` already setup
+
 ### General Usage
 For most people there will be no need to download the codebase and run and host your own GraphQL server, the plans are to host this codebase at mtgjson.com/graphql or something similar but for now it is parked [here](mtgjson-graphql.herokuapp.com)
 

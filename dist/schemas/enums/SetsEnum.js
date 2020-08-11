@@ -1,11 +1,9 @@
-import {
-    GraphQLEnumType,
-} from 'graphql'
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graphql_1 = require("graphql");
 // this is a good bit of grunt work data entry to make a nice pretty enum 
 // for set names -> set code for now we will continue to use string of setcode and redirect to docs for looking up
-
-const SetEnum = new GraphQLEnumType({
+const SetEnum = new graphql_1.GraphQLEnumType({
     name: "SetEnum",
     values: {
         TENTH_EDITION: {
@@ -212,7 +210,7 @@ const SetEnum = new GraphQLEnumType({
         DUEL_DECKS_SORIN_VS_TIBALT: {
             value: "DDK"
         },
-        DUEL_DECKS_HEROES_VS_MONSTERS:{
+        DUEL_DECKS_HEROES_VS_MONSTERS: {
             value: "DDL"
         },
         DUEL_DECKS_JACE_VS_VRASKA: {
@@ -228,7 +226,6 @@ const SetEnum = new GraphQLEnumType({
             value: "DDP"
         }
     }
-})
-
-
-export default SetEnum
+});
+exports.default = SetEnum;
+//# sourceMappingURL=SetsEnum.js.map
