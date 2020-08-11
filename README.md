@@ -24,6 +24,13 @@ If you would like to contribute to the development of this project please reach 
 Report any bugs to issues to [here](https://github.com/milorue/mtgjson-graphql/issues)
 
 ## How to Use
+
+Basic Query
+
+<img src="./assets/exampleQuery.png"/>
+
+<img src="./assets/exampleQuery2.png"/>
+
 ### Basic Usage
 To get started from scratch quickly simply clone this repository and run the following:
 
