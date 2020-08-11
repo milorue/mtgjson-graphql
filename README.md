@@ -15,7 +15,7 @@ This repository contains the code to run the GraphQL server via Apollo Server
 MTGJSON GraphQL is exactly what you would expect from the name, an open-source GraphQL API built on top of the MTGJSON data sets. This API focuses on the JSON payloads for MTGJSON.
 
 ### Maintained
-This codebase is maintained by Milo Rue as a part of the greater MTGJSON team which can be found on the MTGJSON [website](mtgjson.com).
+This codebase is maintained by Milo Rue as a part of the greater MTGJSON team which can be found on the MTGJSON [website](https://mtgjson.com).
 
 ### Contributing
 If you would like to contribute to the development of this project please reach out on [Discord](https://mtgjson.com/discord) or open a [Pull request](https://github.com/milorue/mtgjson-graphql/pulls).
