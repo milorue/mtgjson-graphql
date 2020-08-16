@@ -53,6 +53,3 @@ this will allow you to utilize `npm start` for whatever deployment solution you 
 
 ### General Usage
 For most people there will be no need to download the codebase and run and host your own GraphQL server, the plans are to host this codebase at mtgjson.com/graphql or something similar.
-
-## Documentation
-The benefit of using GraphQL is that the vast majority of the user-facing product is self-documenting so within GraphiQL or whatever client you are utilizing you can view the documentation and schema for the end point.
