@@ -7,7 +7,7 @@ import SetQueries from './queries/SetsQuery'
 import DeckQueries from "./queries/DecksQuery"
 import CompiledListQueries from "./queries/CompiledListQuery"
 import KeywordsQueries from "./queries/KeywordsQuery"
-// import AtomicCardQueries from "./queries/AtomicCardQuery"
+import AtomicCardQueries from "./queries/AtomicCardQuery"
 
 const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
@@ -17,7 +17,8 @@ const schema = new GraphQLSchema({
             ...SetQueries,
             ...DeckQueries,
             ...CompiledListQueries,
-            ...KeywordsQueries
+            ...KeywordsQueries,
+            ...AtomicCardQueries,
         }),
     }),
 })

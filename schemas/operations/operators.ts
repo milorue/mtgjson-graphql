@@ -36,8 +36,15 @@ export const getDeckList = () => {
 // Talk to Mark about the SQLite and SQL
 export const getAtomicCards = () => {
     return axios
-    .get(apiURL + "AtomicCards.json")
-    .then(res => res.data)
+    .get(apiURL + "AtomicCards.json",
+    {
+        params: {
+            _limit: 100
+        }
+    })
+    .then(res => {
+        return res.data
+    })
 }
 
 export const getCompiledList = () => {
@@ -50,6 +57,16 @@ export const getKeywords = () => {
     return axios
     .get(apiURL + "Keywords.json")
     .then(res => res.data)
+}
+
+export const getAllPrintings = () => {
+    return axios
+    .get(apiURL + "AllPrintings.json",
+    {
+        params: {
+            _limit: 100
+        }
+    }).then(res => res.data)
 }
 
 // Caching operations
@@ -73,5 +90,9 @@ export async function cacheDecks(){
         }
         
     }
+}
+
+export async function cacheSets(){
+
 }
 

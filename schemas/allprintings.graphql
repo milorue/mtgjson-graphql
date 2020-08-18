@@ -1,3 +1,7 @@
+# *NOTE* this .graphql file is auto generated but requires 
+# the file watchers in whatever IDE you're using to work with Typescript
+# and there may just be general errors from this file, it doesn't actually do anything just for a simple reference
+
 # Queries
 
 type Query{
