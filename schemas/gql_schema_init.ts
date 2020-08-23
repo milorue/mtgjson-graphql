@@ -22,6 +22,7 @@ const queryComplexityRule = queryComplexity({
 const apolloServer = new ApolloServer({
   schema,
   introspection: true,
+  playground: true,
   validationRules: [depthLimit(7), queryComplexityRule],
   formatError: (err): Error => {
     if (err.message.startsWith('Database Error: ')) {
