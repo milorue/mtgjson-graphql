@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.cacheDecks = exports.getKeywords = exports.getCompiledList = exports.getAtomicCards = exports.getDeckList = exports.getDeck = exports.getSetList = exports.getCardSet = void 0;
+exports.cacheSets = exports.cacheDecks = exports.getMeta = exports.getAllPrintings = exports.getKeywords = exports.getCompiledList = exports.getAtomicCards = exports.getDeckList = exports.getDeck = exports.getSetList = exports.getCardSet = void 0;
 const axios_1 = __importDefault(require("axios"));
 const parentURL = "https://mtgjson.com/api/";
 const version = "v5/";
@@ -34,8 +34,14 @@ exports.getDeckList = () => {
 // Talk to Mark about the SQLite and SQL
 exports.getAtomicCards = () => {
     return axios_1.default
-        .get(apiURL + "AtomicCards.json")
-        .then(res => res.data);
+        .get(apiURL + "AtomicCards.json", {
+        params: {
+            _limit: 100
+        }
+    })
+        .then(res => {
+        return res.data;
+    });
 };
 exports.getCompiledList = () => {
     return axios_1.default
@@ -46,6 +52,22 @@ exports.getKeywords = () => {
     return axios_1.default
         .get(apiURL + "Keywords.json")
         .then(res => res.data);
+};
+exports.getAllPrintings = () => {
+    return axios_1.default
+        .get(apiURL + "AllPrintings.json", {
+        params: {
+            _limit: 100
+        }
+    }).then(res => res.data);
+};
+exports.getMeta = () => {
+    return axios_1.default
+        .get(apiURL + "Meta.json", {
+        params: {
+            _limit: 100
+        }
+    }).then(res => res.data);
 };
 // Caching operations
 async function cacheDecks() {
@@ -66,4 +88,7 @@ async function cacheDecks() {
     }
 }
 exports.cacheDecks = cacheDecks;
+async function cacheSets() {
+}
+exports.cacheSets = cacheSets;
 //# sourceMappingURL=operators.js.map

@@ -16,15 +16,30 @@ const SetQueries = {
             },
         },
         async resolve(_source, { set }) {
-            const result = await operators_1.getCardSet(set);
-            return result.data;
+            try {
+                const result = await operators_1.getCardSet(set);
+                return result.data;
+            }
+            catch (err) {
+                if (err.response.status === 404) {
+                    throw new Error("Invalid set code");
+                }
+                else {
+                    throw new Error("API fetch failed with " + err);
+                }
+            }
         },
     },
     getSets: {
         type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLList(SetListType_1.default)),
         async resolve(_source) {
-            const result = await operators_1.getSetList();
-            return result.data;
+            try {
+                const result = await operators_1.getSetList();
+                return result.data;
+            }
+            catch (err) {
+                throw new Error("API fetch failed with " + err);
+            }
         }
     }
 };

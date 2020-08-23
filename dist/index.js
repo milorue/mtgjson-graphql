@@ -11,7 +11,7 @@ app.enable('trust proxy');
 // redirects should be ideally setup in reverse proxy like nignx
 app.use(express_rate_limit_1.default({
     windowMs: 15 * 60 * 1000,
-    max: 100,
+    max: 10000,
 }));
 // GraphQL server setup
 gql_schema_init_1.default.applyMiddleware({ app, path: '/graphql' });

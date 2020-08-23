@@ -18,23 +18,14 @@ const AtomicCardQueries = {
         },
         async resolve(_source, { cardName }) {
             const result = await operators_1.getAtomicCards();
-            console.log(result.data[2]);
-            for (let x = 0; x < result.data.length; x++) {
-                if (result.data[x].asciiName === cardName) {
-                    return result.data[x];
-                }
+            const data = result.data;
+            console.log(data[cardName]);
+            if (data[cardName] != null) {
+                return data[cardName][0];
             }
             throw new Error("Invalid Card Name");
         }
     },
-    getAtomicCards: {
-        type: new graphql_1.GraphQLNonNull(new graphql_1.GraphQLList(AtomicCardType_1.default)),
-        async resolve(_source) {
-            const result = await operators_1.getAtomicCards();
-            console.log(result.data[1]);
-            return result.data;
-        }
-    }
 };
 exports.default = AtomicCardQueries;
 //# sourceMappingURL=AtomicCardQuery.js.map

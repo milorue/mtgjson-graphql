@@ -69,6 +69,16 @@ export const getAllPrintings = () => {
     }).then(res => res.data)
 }
 
+export const getMeta = () => {
+    return axios
+    .get(apiURL + "Meta.json",
+    {
+        params: {
+            _limit: 100
+        }
+    }).then(res => res.data)
+}
+
 // Caching operations
 
 export async function cacheDecks(){
