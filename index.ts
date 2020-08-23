@@ -9,11 +9,11 @@ app.enable('trust proxy');
 // redirects should be ideally setup in reverse proxy like nignx
 app.use(rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 10000, // limit each IP to 100 requests
+    max: 10000, // limit each IP to 10000 requests
 }));
 
 // GraphQL server setup
-apolloServer.applyMiddleware({ app, path: '/graphql' });
+apolloServer.applyMiddleware({ app });
 
 const port = process.env.PORT || 8000
 

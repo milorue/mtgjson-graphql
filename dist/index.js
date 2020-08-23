@@ -14,7 +14,7 @@ app.use(express_rate_limit_1.default({
     max: 10000,
 }));
 // GraphQL server setup
-gql_schema_init_1.default.applyMiddleware({ app, path: '/graphql' });
+gql_schema_init_1.default.applyMiddleware({ app });
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.info("MTGJSON Server Started on port: " + port);
