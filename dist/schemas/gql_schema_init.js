@@ -41,6 +41,7 @@ const queryComplexityRule = graphql_query_complexity_1.default({
 const apolloServer = new apollo_server_express_1.ApolloServer({
     schema: schema_1.default,
     introspection: true,
+    playground: true,
     validationRules: [graphql_depth_limit_1.default(7), queryComplexityRule],
     formatError: (err) => {
         if (err.message.startsWith('Database Error: ')) {
