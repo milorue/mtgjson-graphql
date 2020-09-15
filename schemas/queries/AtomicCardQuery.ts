@@ -1,7 +1,7 @@
 import {
     GraphQLString,
-    // GraphQLList,
-    GraphQLNonNull
+    GraphQLList,
+    GraphQLNonNull,
 } from 'graphql'
 
 import {getAtomicCards} from '../operations/operators'
@@ -12,7 +12,7 @@ import AtomicCard from '../types/cards/AtomicCardType'
 // this entire query needs to be retooled to access a database, 
 // the core tech for it is valid but needs an effecient way to grab the data
 const AtomicCardQueries = {
-    getAtomicCard: {
+    AtomicCard: {
         type: new GraphQLNonNull(AtomicCard),
         args: {
             cardName: {
@@ -27,17 +27,23 @@ const AtomicCardQueries = {
                 return data[cardName][0]
             }            
 
-            throw new Error("Invalid Card Name")
+            throw new Error("Invalid card name")
         }
     },
-    // getAtomicCards: {
-    //     type: new GraphQLNonNull(new GraphQLList(AtomicCard)),
-    //     async resolve(_source){
-    //         const result = await getAtomicCards()
-    //         console.log(result.data[1])
-    //         return result.data
-    //     }
-    // }
+    AtomicCards: {
+        type: new GraphQLNonNull(new GraphQLList(AtomicCard)),
+        async resolve(_source){
+            const result = await getAtomicCards()
+            const data = result.data
+            console.log(data)
+            if(data !== undefined){
+                return data
+            }
+
+            throw new Error("Internal server error")
+            
+        }
+    }
 }
 
 export default AtomicCardQueries

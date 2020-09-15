@@ -8,8 +8,9 @@ import Deck from "../types/decks/DeckType"
 import DeckList from '../types/decks/DeckListType'
 
 const DeckQueries = {
-    getDeck: {
+    Deck: {
         type: new GraphQLNonNull(Deck),
+        description: "Search for deck's by their file name as described in the DeckMeta type",
         args: {
             deck: {
                 type: GraphQLString
@@ -20,11 +21,11 @@ const DeckQueries = {
                 const result = await getDeck(deck)
                 return result.data
             } catch(err){
-                throw new Error("Invalid deck name please check the getDeckMeta or getDeckList queries for file names.")
+                throw new Error("Invalid deck name please check the DeckMeta or DeckList queries for file names.")
             }
         },
     },
-    getDeckMeta: {
+    DeckMeta: {
         type: new GraphQLNonNull(DeckList),
         description: "Describes the meta data of a single deck if given the deck code",
         args: {
@@ -42,9 +43,9 @@ const DeckQueries = {
             throw new Error("Invalid Deck Code")
         }
     },
-    getDeckList: {
+    DeckList: {
         type: new GraphQLNonNull(new GraphQLList(DeckList)),
-        description: "Describes the list of decks and their corresponding meta data",
+        description: "Describes a list of all decks available to MTGJSON with the corresponding data about a given deck",
         async resolve(_source){
             const result = await getDeckList()
             return result.data

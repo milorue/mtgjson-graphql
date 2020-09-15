@@ -5,7 +5,7 @@ import Meta from '../types/misc/MetaType'
 import { getMeta } from '../operations/operators'
 
 const MetaQueries = {
-    getMeta: {
+    Meta: {
         type: new GraphQLNonNull(Meta),
         async resolve(_source){
             try{

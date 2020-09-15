@@ -8,8 +8,9 @@ import Set from "../types/sets/SetType"
 import SetList from '../types/sets/SetListType'
 
 const SetQueries = {
-    getSet: {
+    Set: {
         type: new GraphQLNonNull(Set),
+        description: "Search for sets by their set code as found in SetList type",
         args: {
             set: {
                 type: GraphQLString
@@ -31,7 +32,7 @@ const SetQueries = {
             
         },
     },
-    getSets: {
+    Sets: {
         type: new GraphQLNonNull(GraphQLList(SetList)),
         async resolve(_source){
             try{
