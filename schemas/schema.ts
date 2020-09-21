@@ -9,6 +9,9 @@ import CompiledListQueries from "./queries/CompiledListQuery"
 import KeywordsQueries from "./queries/KeywordsQuery"
 import AtomicCardQueries from "./queries/AtomicCardQuery"
 import MetaQueries from "./queries/MetaQuery"
+import CardQueries from "./queries/CardQuery"
+import LegalitiesQueries from "./queries/LegalitiesQuery"
+import RulingsQueries from "./queries/RulingsQuery"
 
 const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
@@ -21,6 +24,9 @@ const schema = new GraphQLSchema({
             ...KeywordsQueries,
             ...AtomicCardQueries,
             ...MetaQueries,
+            ...CardQueries,
+            ...LegalitiesQueries,
+            ...RulingsQueries,
             
         }),
     }),

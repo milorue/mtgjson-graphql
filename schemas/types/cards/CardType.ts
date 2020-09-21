@@ -179,6 +179,9 @@ const Card = new GraphQLObjectType({
         rulings: {
             type: new GraphQLList(Rulings)
         },
+        setCode: {
+            type: GraphQLString
+        },
         side: {
             type: GraphQLString
         },

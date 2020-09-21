@@ -2,7 +2,7 @@ import {
     GraphQLString, GraphQLNonNull, GraphQLList
 } from 'graphql'
 
-import {getCardSet, getSetList} from '../operations/operators'
+import {getCardSet, getAllSets, getSetList} from '../operations/operators'
 
 import Set from "../types/sets/SetType"
 import SetList from '../types/sets/SetListType'
@@ -33,7 +33,20 @@ const SetQueries = {
         },
     },
     Sets: {
+        type: new GraphQLNonNull(GraphQLList(Set)),
+        description: "Lists all available card sets",
+        async resolve(_source){
+            try{
+                const result = await getAllSets()
+                return result
+            } catch(err){
+                throw new Error("API fetch failed with " + err)
+            }
+        }
+    },
+    SetList: {
         type: new GraphQLNonNull(GraphQLList(SetList)),
+        description: "All sets metadata-like structure listing",
         async resolve(_source){
             try{
                 const result = await getSetList()

@@ -1,7 +1,6 @@
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import apolloServer from './schemas/gql_schema_init';
-import "reflect-metadata"
 
 const app = express();
 

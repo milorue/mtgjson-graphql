@@ -35,7 +35,7 @@ const AtomicCardQueries = {
         async resolve(_source){
             const result = await getAtomicCards()
             const data = result.data
-            console.log(data)
+            // console.log(data)
             if(data !== undefined){
                 return data
             }

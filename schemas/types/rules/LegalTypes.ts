@@ -2,23 +2,23 @@ import {
     GraphQLString, GraphQLObjectType, GraphQLInt
 } from 'graphql'
 
-const Rulings = new GraphQLObjectType({
-    name: "Rulings",
-    description: "Describes a list of rulings that are for a specific card's uuid",
+const Legal = new GraphQLObjectType({
+    name: "Legal",
+    description: "Play formats that are legal for a specific card's UUID",
     fields: () => ({
         id: {
             type: GraphQLInt
         },
-        date: {
+        format: {
             type: GraphQLString
         },
-        text: {
+        status: {
             type: GraphQLString
         },
         uuid: {
             type: GraphQLString
-        },
+        }
     })
 })
 
-export default Rulings
+export default Legal
