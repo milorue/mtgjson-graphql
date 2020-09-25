@@ -6,6 +6,7 @@ import {getDeck, getDeckList} from '../operations/operators'
 
 import Deck from "../types/decks/DeckType"
 import DeckList from '../types/decks/DeckListType'
+import { validateAPIKey, validateHeader } from '../../services/tokenService'
 
 const DeckQueries = {
     Deck: {
@@ -16,7 +17,14 @@ const DeckQueries = {
                 type: GraphQLString
             },
         },
-        async resolve(_source, {deck}){
+        async resolve(_source, {deck}, context){
+
+            await validateHeader(context.req.headers.authorization)
+
+            const apiKey = context.req.headers.authorization.split(" ")[1]
+
+            await validateAPIKey(apiKey)
+
             try{
                 const result = await getDeck(deck)
                 return result.data
@@ -33,7 +41,14 @@ const DeckQueries = {
                 type: GraphQLString
             }
         },
-        async resolve(_source, {deckCode}){
+        async resolve(_source, {deckCode}, context){
+
+            await validateHeader(context.req.headers.authorization)
+
+            const apiKey = context.req.headers.authorization.split(" ")[1]
+
+            await validateAPIKey(apiKey)
+
             const result = await getDeckList()
             for(let x = 0; x<result.data.length; x++){
                 if(result.data[x].code === deckCode){
@@ -46,7 +61,14 @@ const DeckQueries = {
     DeckList: {
         type: new GraphQLNonNull(new GraphQLList(DeckList)),
         description: "Describes a list of all decks available to MTGJSON with the corresponding data about a given deck",
-        async resolve(_source){
+        async resolve(_source, _args, context){
+
+            await validateHeader(context.req.headers.authorization)
+
+            const apiKey = context.req.headers.authorization.split(" ")[1]
+
+            await validateAPIKey(apiKey)
+            
             const result = await getDeckList()
             return result.data
         }

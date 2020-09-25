@@ -7,6 +7,7 @@ import {
 import {getAtomicCards} from '../operations/operators'
 
 import AtomicCard from '../types/cards/AtomicCardType'
+import { validateAPIKey, validateHeader } from '../../services/tokenService'
 
 
 // this entire query needs to be retooled to access a database, 
@@ -19,20 +20,33 @@ const AtomicCardQueries = {
                 type: GraphQLString
             },
         },
-        async resolve(_source, {cardName}){
+        async resolve(_source, {cardName}, context){
+
+            await validateHeader(context.req.headers.authorization)
+
+            const apiKey = context.req.headers.authorization.split(" ")[1]
+
+            await validateAPIKey(apiKey)
+
             const result = await getAtomicCards()
             const data = result.data
             console.log(data[cardName])
             if(data[cardName] != null){
                 return data[cardName][0]
-            }            
-
-            throw new Error("Invalid card name")
+            }
+            
         }
     },
     AtomicCards: {
         type: new GraphQLNonNull(new GraphQLList(AtomicCard)),
-        async resolve(_source){
+        async resolve(_source, _args, context){
+
+            await validateHeader(context.req.headers.authorization)
+
+            const apiKey = context.req.headers.authorization.split(" ")[1]
+
+            await validateAPIKey(apiKey)
+
             const result = await getAtomicCards()
             const data = result.data
             // console.log(data)

@@ -7,7 +7,6 @@ import SetQueries from './queries/SetsQuery'
 import DeckQueries from "./queries/DecksQuery"
 import CompiledListQueries from "./queries/CompiledListQuery"
 import KeywordsQueries from "./queries/KeywordsQuery"
-import AtomicCardQueries from "./queries/AtomicCardQuery"
 import MetaQueries from "./queries/MetaQuery"
 import CardQueries from "./queries/CardQuery"
 import LegalitiesQueries from "./queries/LegalitiesQuery"
@@ -22,7 +21,6 @@ const schema = new GraphQLSchema({
             ...DeckQueries,
             ...CompiledListQueries,
             ...KeywordsQueries,
-            ...AtomicCardQueries,
             ...MetaQueries,
             ...CardQueries,
             ...LegalitiesQueries,

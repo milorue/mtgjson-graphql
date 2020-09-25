@@ -1,3 +1,4 @@
 node_modules
 schemas/operations/data
 schemas/operations/database
+.env

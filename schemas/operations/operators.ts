@@ -7,7 +7,7 @@ const apiURL = parentURL + version
 
 import {storeJSON} from './cache/loadFiles'
 
-let allPrintingsDB = new sqlite3.Database('/home/mrue/open-source/mtgjson-graphql/schemas/operations/database/AllPrintings.db', sqlite3.OPEN_READONLY, (err) => {
+let allPrintingsDB = new sqlite3.Database('/home/mrue/open-source/mtgjson-graphql/schemas/operations/database/AllPrintings.db', sqlite3.OPEN_READWRITE, (err) => {
     if(err){
         console.error(err.message)
     }
@@ -18,6 +18,30 @@ let allPrintingsDB = new sqlite3.Database('/home/mrue/open-source/mtgjson-graphq
 
     
 })
+
+// API KEY OPERATIONS
+
+export const addKey = async (username, date, key) => {
+    return new Promise((reject) => {
+        allPrintingsDB.run(`INSERT INTO apikeys (username, key, date) VALUES ("${username}", "${key}", "${date}")`,function(err){
+            if(err){
+                console.log(err)
+                reject(null);
+            }
+        })
+    })
+}
+
+export const getKey = async (key) => {
+    return new Promise((resolve, reject) => {
+        allPrintingsDB.get(`SELECT key FROM apikeys WHERE key="${key}"`, function(err, rows){
+            if(err){
+                reject(null);
+            }
+            resolve(rows)
+        })
+    })
+}
 
 // database MTGJSON operations
 

@@ -1,6 +1,8 @@
+require('dotenv').config()
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import apolloServer from './schemas/gql_schema_init';
+import cors from 'cors'
 
 const app = express();
 
@@ -12,8 +14,13 @@ app.use(rateLimit({
     max: 10000, // limit each IP to 10000 requests
 }));
 
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:3000'
+}))
+
 // GraphQL server setup
-apolloServer.applyMiddleware({ app });
+apolloServer.applyMiddleware({ app, cors: false });
 
 const port = process.env.PORT || 8000
 

@@ -3,11 +3,18 @@ import {
 } from 'graphql'
 import Rulings from '../types/rules/RulingsType'
 import { getAllRulings, getRulingsByUUID } from '../operations/operators'
+import { validateAPIKey, validateHeader } from '../../services/tokenService'
 
 const RulingsQueries = {
     Rulings: {
         type: new GraphQLNonNull(new GraphQLList(Rulings)),
-        async resolve(_source){
+        async resolve(_source, _args, context){
+            await validateHeader(context.req.headers.authorization)
+
+            const apiKey = context.req.headers.authorization.split(" ")[1]
+
+            await validateAPIKey(apiKey)
+
             const result = await getAllRulings()
 
             if(result !== undefined || result !== null){
@@ -26,7 +33,14 @@ const RulingsQueries = {
                 type: GraphQLString
             }
         },
-        async resolve(_source, {uuid}){
+        async resolve(_source, {uuid}, context){
+
+            await validateHeader(context.req.headers.authorization)
+
+            const apiKey = context.req.headers.authorization.split(" ")[1]
+
+            await validateAPIKey(apiKey)
+
             const result = await getRulingsByUUID(uuid)
 
             if(result !== undefined || result !== null){

@@ -1,6 +1,5 @@
 import { ApolloServer } from 'apollo-server-express';
 import { GraphQLError } from 'graphql';
-import depthLimit from 'graphql-depth-limit';
 import queryComplexity, {
   simpleEstimator,
 } from 'graphql-query-complexity';
@@ -21,9 +20,10 @@ const queryComplexityRule = queryComplexity({
 
 const apolloServer = new ApolloServer({
   schema,
+  context: ({ req, res}) => ({req, res}),
   introspection: true,
   playground: true,
-  validationRules: [depthLimit(7), queryComplexityRule],
+  validationRules: [queryComplexityRule],
   formatError: (err): Error => {
     if (err.message.startsWith('Database Error: ')) {
       return new Error('Internal server error');
