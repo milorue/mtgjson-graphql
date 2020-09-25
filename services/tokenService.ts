@@ -26,7 +26,6 @@ export const validateAPIKey = async (key: String) => {
 
 export const validateHeader = async (header) => {
     if(header !== undefined && header !== null){
-        console.log('valid')
         return true
     }
     else{
